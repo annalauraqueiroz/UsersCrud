@@ -1,0 +1,60 @@
+﻿@model List<PersonModel>
+
+<h2>@ViewData["Title"]</h2>
+<p>
+    <a asp-action="Form" asp-route-id="0" class="btn btn-default">Nova Pessoa Física</a>
+</p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr class="success">
+            <th>
+                Nome
+            </th>
+            <th>
+                Sobrenome
+            </th>
+            <th>
+                Data de Nascimento
+            </th>
+            <th>
+                Email
+            </th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RG)
+                </td>
+                <td>
+                    <a asp-action="Form" asp-route-id="@item.PersonId">Editar</a>
+                    
+                    <a asp-action="Delete" asp-route-id="@item.PersonId">Excluir</a>
+                </td>
+                    
+                
+            </tr>
+
+        }
+    </tbody>
+</table>
